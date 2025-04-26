@@ -189,7 +189,12 @@ impl PumpkinBlock for DoorBlock {
         door_props.to_state_id(block)
     }
 
-    async fn can_place_at(&self, world: &World, block_pos: &BlockPos) -> bool {
+    async fn can_place_at(
+        &self,
+        world: &World,
+        block_pos: &BlockPos,
+        _face: &BlockDirection,
+    ) -> bool {
         if world
             .get_block_state(&block_pos.offset(BlockDirection::Up.to_offset()))
             .await

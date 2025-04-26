@@ -1736,7 +1736,7 @@ impl Player {
         if !intersects
             && server
                 .block_registry
-                .can_place_at(world, &block, &final_block_pos)
+                .can_place_at(world, &block, &final_block_pos, final_face)
                 .await
         {
             let _replaced_id = world
