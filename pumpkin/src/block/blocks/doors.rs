@@ -195,7 +195,7 @@ impl PumpkinBlock for DoorBlock {
         block_pos: &BlockPos,
         _face: &BlockDirection,
     ) -> bool {
-        if world
+        world
             .get_block_state(&block_pos.offset(BlockDirection::Up.to_offset()))
             .await
             .is_ok_and(|state| state.replaceable())
@@ -203,10 +203,6 @@ impl PumpkinBlock for DoorBlock {
                 .get_block_state(&block_pos.offset(BlockDirection::Down.to_offset()))
                 .await
                 .is_ok_and(|state| state.is_solid() && state.is_full_cube())
-        {
-            return true;
-        }
-        false
     }
 
     async fn placed(
@@ -331,7 +327,9 @@ impl PumpkinBlock for DoorBlock {
         {
             if lv == DoubleBlockHalf::Lower
                 && direction == &BlockDirection::Down
-                && !self.can_place_at(world, block_pos).await
+                && !self
+                    .can_place_at(world, block_pos, &BlockDirection::Down)
+                    .await
             {
                 return 0;
             }
