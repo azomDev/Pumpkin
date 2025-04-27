@@ -5,6 +5,7 @@ use blocks::farmland::FarmLandBlock;
 use blocks::fence_gates::FenceGateBlock;
 use blocks::fences::FenceBlock;
 use blocks::logs::LogBlock;
+use blocks::redstone::bell::BellBlock;
 use blocks::redstone::buttons::ButtonBlock;
 use blocks::redstone::observer::ObserverBlock;
 use blocks::redstone::piston::PistonBlock;
@@ -75,6 +76,7 @@ pub fn default_registry() -> Arc<BlockRegistry> {
     manager.register(TorchBlock);
 
     // Redstone
+    manager.register(BellBlock);
     manager.register(ButtonBlock);
     manager.register(LeverBlock);
     manager.register(ObserverBlock);

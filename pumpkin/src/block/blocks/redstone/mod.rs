@@ -10,6 +10,7 @@ use pumpkin_world::block::BlockDirection;
 
 use crate::world::World;
 
+pub(crate) mod bell;
 pub(crate) mod buttons;
 pub(crate) mod lever;
 pub(crate) mod observer;
